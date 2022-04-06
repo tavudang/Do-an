@@ -1,0 +1,33 @@
+﻿@using mvcMobileStore.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <td> Mã sản phẩm </td>
+        <td> Tên sản phẩm  </td>
+        <td> Ảnh sản phẩm </td>
+        <td> Đơn giá  </td>
+        <td> Thành tiền </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.iMasp  </td>
+            <td> @item.iTensp </td>
+            <td><img src="~/Hinhsanpham/@item.iAnhsp" /></td>
+            <td> @item.iSoluong</td>
+            <td>@String.Format("{0:0,0}", item.iDongia) </td>
+            <td>@String.Format("{0:0,0}", item.iThanhtien) </td>
+        </tr>
+    }
+    <tr style="font-weight:bold; text-align:right; color:red">
+        <td colspan="3"> Số lượng: @ViewBag.Tongsoluong</td>
+        <td colspan="3"> Tổng tiền: @String.Format("{0:0,0 }", ViewBag.Tongtien) VNĐ </td>
+    </tr>
+</table>
+
